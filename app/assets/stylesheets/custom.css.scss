@@ -9,9 +9,42 @@
       margin-right: 10px;
     }  
   }
-  .toggle-change{
-      &::after {
-      border-top: 0;
-      border-bottom: .3em solid;
-      }
+.toggle-change{
+    &::after {
+    border-top: 0;
+    border-bottom: .3em solid;
+    }
   } 
+
+  .logo {
+  float: left;
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.logo:hover{
+  color: #fff;
+}
+
+.experience-slider{
+  background: #0d6efd;
+  height: 90vh;
+  width: 100%;
+  position: relative;
+}
+
+.experice-info{
+  position: absolute;
+  top: 50%;
+	left: 50%;
+	transform:translate(-50%, -50%);
+	text-align: center;
+  color: #fff;
+}
+
+.experice-info h3{
+  margin-bottom: 32px;
+}

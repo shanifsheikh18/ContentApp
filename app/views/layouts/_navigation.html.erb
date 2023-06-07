@@ -1,37 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <%= link_to "VECTOR X", root_path,class: "navbar-brand logo" %>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Content
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Create Content</a></li>
+            <li><a class="dropdown-item" href="#">View Contents</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
           </ul>
         </li>
+        <% end %>
       </ul>
         <% if user_signed_in? %>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu"> 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user"><%= current_user.email %></i>
+                    <i class="fas fa-user"><%= current_user.username %></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                    <li><%= button_to "Delete Profile", registration_path(current_user),class: "dropdown-item", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></li>
                     <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item" %></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
