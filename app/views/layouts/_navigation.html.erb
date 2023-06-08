@@ -19,8 +19,8 @@
             Content
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Create Content</a></li>
-            <li><a class="dropdown-item" href="#">View Contents</a></li>
+            <li><%= link_to "Create Content", new_content_path, class: "dropdown-item" %></li>
+            <li><%= link_to "View Contents", contents_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#"></a></li>
           </ul>

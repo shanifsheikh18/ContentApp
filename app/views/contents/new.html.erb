@@ -1,0 +1,19 @@
+<%= render 'shared/errors', obj: @content %>
+<div class="mt-5">  
+  <div class="d-flex justify-content-center">
+    <div class="col col-md-10">
+      <%= form_with(model: @content, local: true, html: {id: "msform"}) do |f| %>  
+        <fieldset>
+        
+          <h2 class="fs-title">CREATE AN CONTENT</h2>
+          <h3 class="fs-subtitle">Be a part of us.</h3>
+          <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "Title" %>
+          <%= f.text_field :description, autofocus: true, class: "form-control", placeholder: "Description" %>
+          <%= f.submit "Submit", class: " action-button" %>
+
+        </fieldset>
+
+      <% end %>
+    </div>
+  </div>
+</div>

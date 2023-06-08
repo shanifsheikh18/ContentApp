@@ -1,0 +1,24 @@
+<div class="container">
+    <%= render 'shared/errors', obj: @content %>
+    <%= form_with(model: @content, local: true) do |f| %>
+
+        <div class="row mb-3">
+            <%= f.label :title, class: "col-sm-2 col-form-label text-dark fw-bold " %>
+            <div class="col-sm-10">
+                <%= f.text_field :title, autocomplete: "title", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <%= f.label :description, class: "col-sm-2 col-form-label text-dark fw-bold " %>
+            <div class="col-sm-10">
+                <%= f.text_field :description, autocomplete: "description", class: "form-control" %>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <%= f.submit "Submit", class: "btn btn-primary py-2 px-4" %>
+        </div>
+    
+    <% end %>
+</div>
