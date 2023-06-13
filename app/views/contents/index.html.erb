@@ -7,16 +7,21 @@
             <div class="col-8 mt-4">
                 <div class="card text-center text-light shadow mb-3 bg-dark rounded">
                     <div class="card-header border-white fst-italic">
-                    shanif
+                    <% content.users.each do |user| %>
+                        by <%= user.username %>
+                    <% end %>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><%= content.title %></h5>
                         <p class="card-text"><%= truncate(content.description, length: 50) %></p>
-
+                        
                         <%= link_to "View", content_path(content), class:"btn btn-outline-success" %>
-                       
-                            <%= link_to "Edit", edit_content_path(content), class:"btn btn-outline-primary" %>
-                            <%= link_to "Delete", content_path(content), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                        <% content.users.each do |user| %>
+                            <% if user == current_user %>
+                                <%= link_to "Edit", edit_content_path(content), class:"btn btn-outline-primary" %>
+                                <%= link_to "Delete", content_path(content), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                            <% end %>    
+                        <% end %>
 
                     </div>
                     

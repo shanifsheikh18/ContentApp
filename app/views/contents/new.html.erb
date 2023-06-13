@@ -9,6 +9,8 @@
           <h3 class="fs-subtitle">Be a part of us.</h3>
           <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "Title" %>
           <%= f.text_field :description, autofocus: true, class: "form-control", placeholder: "Description" %>
+          <%= f.collection_select :user_ids, User.all, :id, :username, { prompt: "selection the users (can be emply)"}, {multiple: true, size: 3, class: "form-select"} %>
+          <%= f.collection_select :attached_contents, @userscontents, :id, :title, { prompt: "selection the contents related to this content (can be emply)"}, {multiple: true, size: 3, class: "form-select"} %>
           <%= f.submit "Submit", class: " action-button" %>
 
         </fieldset>

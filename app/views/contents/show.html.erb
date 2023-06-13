@@ -5,15 +5,31 @@
         <div class="col-8 mt-4">
             <div class="card text-center text-light shadow mb-3 bg-dark rounded">
                 <div class="card-header border-white fst-italic">
-                shanif
+                <% @content.users.each do |user| %>
+                    by <%= user.username %>
+                <% end %>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%= @content.title %></h5>
                     <p class="card-text"><%= @content.description %></p>
-                       
-                    <%= link_to "Edit", edit_content_path(@content), class:"btn btn-outline-primary" %>
-                    <%= link_to "Delete", content_path(@content), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                    
+                    <% @content.users.each do |user| %>
+                        <% if user == current_user %>
+                            <%= link_to "Edit", edit_content_path(@content), class:"btn btn-outline-primary" %>
+                            <%= link_to "Delete", content_path(@content), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                        <% end %>
+                    <% end %>
 
+                    <%= link_to "Back to Contents", contents_path, class:"btn btn-outline-success" %>
+                    <div class="text-start">
+                        <% if @content.attached_contents != [] %>
+                            <h6 class="py-3">ASSOCIATED CONTENTS OF SAME USER</h6>
+                        <% end %>
+                        <% @subcontents.each do |subcontent| %>
+                            <%= link_to subcontent.title,content_path(subcontent), class:"btn btn-outline-info" %>
+                        <% end %>
+
+                    </div>
                 </div>
                     
                 <div class="card-footer text-body-secondary border-white">
