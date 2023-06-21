@@ -1,3 +1,4 @@
+
 <h1 class="text-center mt-4">Showing Content</h1>
 <div class="container">
         
@@ -39,7 +40,37 @@
                 </div>
 
             </div>
+
+            
         </div>
+        <% if user_signed_in? %>
+
+        <div class="d-flex justify-content-between mt-4">
+                <div class="col-6 py-3 card text-center text-light shadow mx-1 bg-dark rounded">
+                    <h4>Comments</h4>
+                    <% @comments.each do |comment| %>
+                        <div class="text-dark bg-light p-1 m-1 rounded" style="background: floralwhite !important;">
+                                <div class="d-block text-start">
+                                    <span class="d-block fst-italic">by <strong><%= User.find(comment.user_id).username %></strong></span>
+                                    <span class="d-block px-2"><%= comment.note %></span>
+                                </div>
+                        </div>
+                    <% end %>
+
+                    <%= render partial: 'comments/form', locals: {commented_on: @content}%>
+
+                </div>
+                <div class="col-6 py-3 card text-center text-light shadow mx-1 bg-dark rounded">
+                    <h4>Feedback</h4>
+
+                    <%= render 'feedbacks/feedbacks', feedback_on: @content %>
+
+                    <%= render partial: 'feedbacks/form', locals: {feedback_on: @content}%>
+                </div>
+                
+        </div>
+
+        <% end %>
     </div>
 
 </div>

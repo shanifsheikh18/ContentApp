@@ -1,0 +1,9 @@
+
+<%= form_for [feedback_on,Feedback.new], html: {id: "msform"} do |f| %>  
+    <fieldset>
+    <%= f.hidden_field :feedback_on_id, value: params["id"] %>
+    <%= f.hidden_field :feedback_on_type, value: params["controller"].singularize.capitalize %>
+    <%= f.text_field :info, autofocus: true, class: "form-control", placeholder: "feedback" %>
+    <%= f.submit "Feedback", class: "action-button" %>
+    </fieldset>
+<% end %>

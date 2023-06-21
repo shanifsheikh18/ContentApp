@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'navigation' %>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to "VECTOR X", root_path,class: "navbar-brand logo" %>
@@ -31,7 +33,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu"> 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user"><%= current_user.username %></i>
+                    <i><%= current_user.username %></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><%= button_to "Delete Profile", registration_path(current_user),class: "dropdown-item", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></li>

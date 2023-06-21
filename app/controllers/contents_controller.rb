@@ -6,7 +6,8 @@ class ContentsController < ApplicationController
     end
 
     def show
-        @subcontents = Content.where(id: @content.attached_contents)  
+        @subcontents = Content.where(id: @content.attached_contents)
+        @comments = @content.comments
     end
 
     def new
@@ -40,8 +41,6 @@ class ContentsController < ApplicationController
             @content.users << current_user
             @content.attached_contents = params[:content][:attached_contents]
         end
-
-        # user = Content.find_by(id: params[:content][:id])
 
         if @content.update(content_params)
             

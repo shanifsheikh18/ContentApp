@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  info: MyString
+  feedback_on_id: 1
+  feedback_on_type: MyString
+  User: one
+
+two:
+  info: MyString
+  feedback_on_id: 1
+  feedback_on_type: MyString
+  User: two

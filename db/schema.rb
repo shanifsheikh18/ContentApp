@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_12_160517) do
+ActiveRecord::Schema.define(version: 2023_06_16_131917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "note"
+    t.integer "commented_on_id"
+    t.string "commented_on_type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
@@ -21,6 +31,16 @@ ActiveRecord::Schema.define(version: 2023_06_12_160517) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "attached_contents", default: [], array: true
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "info"
+    t.integer "feedback_on_id"
+    t.string "feedback_on_type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "user_contents", force: :cascade do |t|
@@ -43,4 +63,6 @@ ActiveRecord::Schema.define(version: 2023_06_12_160517) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "feedbacks", "users"
 end

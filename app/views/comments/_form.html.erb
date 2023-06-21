@@ -1,0 +1,9 @@
+
+<%= form_for [commented_on,Comment.new], html: {id: "msform"} do |f| %>  
+    <fieldset>
+    <%= f.hidden_field :commented_on_id, value: params["id"] %>
+    <%= f.hidden_field :commented_on_type, value: params["controller"].singularize.capitalize %>
+    <%= f.text_field :note, autofocus: true, class: "form-control", placeholder: "comment" %>
+    <%= f.submit "Comment", class: "action-button" %>
+    </fieldset>
+<% end %>
